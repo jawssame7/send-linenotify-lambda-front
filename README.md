@@ -1,1 +1,0 @@
-# send-linenotify-lambda
