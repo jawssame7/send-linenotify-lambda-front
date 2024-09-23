@@ -1,10 +1,19 @@
 import { Container, Box, Stack, TextareaAutosize, Button } from "@mui/material";
 import './App.css'
+import {useState} from "react";
 
 function App() {
 
-  const onClickSend = () => {
-    console.log('click send');
+  const [message, setMessage] = useState('')
+
+  const onClickSend = async () => {
+    await fetch('https://7pw6zovc67.execute-api.ap-northeast-1.amazonaws.com/line-notify',
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify({message: message}),
+        }
+    );
   };
 
   return (
@@ -13,7 +22,7 @@ function App() {
         <Box>
           <Stack spacing={5}>
             <h1>Line NotifyへAWS Lambdaを使って送信</h1>
-            <TextareaAutosize minRows={10} ></TextareaAutosize>
+            <TextareaAutosize minRows={10} onChange={e => setMessage(e.target.value)} value={message}></TextareaAutosize>
             <Button variant="contained" onClick={onClickSend}>Send!!</Button>
           </Stack>
         </Box>
