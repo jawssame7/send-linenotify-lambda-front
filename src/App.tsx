@@ -7,7 +7,7 @@ function App() {
   const [message, setMessage] = useState('')
 
   const onClickSend = async () => {
-    await fetch('https://xxxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/line-notify',
+    await fetch('https://xxxxxxxxxx.execute-api.ap-northeast-1.amazonaws.com/xxxxxxxxx',
         {
           method: 'POST',
           mode: 'no-cors',
